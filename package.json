@@ -2,7 +2,7 @@
     "name": "recommended-badges-warehouse-worker",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "worker.js",
     "license": "MIT",
     "dependencies": {
       "bull": "^4.12.9",
