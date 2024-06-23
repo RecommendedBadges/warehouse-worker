@@ -5,12 +5,13 @@
     "main": "worker.js",
     "license": "MIT",
     "dependencies": {
-      "bull": "^4.12.9",
-      "express": "^4.19.2",
-      "throng": "^5.0.0"
+        "@salesforce/cli": "^2.46.6",
+        "axios": "^1.7.2",
+        "bull": "^4.12.9",
+        "express": "^4.19.2",
+        "throng": "^5.0.0"
     },
     "scripts": {
-      "start": "nf start"
+        "start": "nf start"
     }
-  }
-  
+}
