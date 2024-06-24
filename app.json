@@ -1,0 +1,10 @@
+{
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "eco"
+        }
+    },
+    "name": "Warehouse Worker",
+    "repository": "https://github.com/RecommendedBadges/warehouse-worker"
+}
