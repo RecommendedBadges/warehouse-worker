@@ -1,9 +1,9 @@
 const callout = require('./callout.js');
 
-async function scaleClockDyno(numDynos) {
+async function scaleDyno(formationType, numDynos) {
     await callout.patch(
         'heroku',
-        `/formation/${process.env.FORMATION_TYPE}`,
+        `/formation/${formationType}`,
         {
             "quantity": numDynos,
             "size": "eco"
@@ -12,5 +12,5 @@ async function scaleClockDyno(numDynos) {
 }
 
 module.exports = {
-    scaleClockDyno
+    scaleDyno
 };

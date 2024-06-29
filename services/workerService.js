@@ -72,8 +72,8 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
       try {
         let pullRequestComment = `${pullRequestNumber}\nUpdated Packages:\n${Object.entries(updatedPackages)}\nPackages Not Updated:\n${packagesNotUpdated.join(', ')}`;
         console.log(pullRequestComment);
-      github.commentOnPullRequest(pullRequestNumber, pullRequestComment);
-      await heroku.scaleClockDyno(1);
+        github.commentOnPullRequest(pullRequestNumber, pullRequestComment);
+        await heroku.scaleDyno('clock', 1);
       } catch(err) {
         console.error(err);
       }
@@ -82,7 +82,7 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
       await github.mergeOpenPullRequest(pullRequestNumber);
       try {
         await pushUpdatedPackageJSON(updatedPackages);
-      await heroku.scaleClockDyno(0);
+        await heroku.scaleDyno('clock', 0);
       } catch(err) {
         console.error(err);
       }
