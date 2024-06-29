@@ -191,7 +191,7 @@ async function pushUpdatedPackageJSON(updatedPackages) {
 
   ({stderr} = await exec(`${GIT_PULL_COMMAND}`))
 
-  process.stdout.write('Updating package.json and pushing to main');
+  process.stdout.write('Updating sfdx-project.json and pushing to main');
   for(let updatedPackageAlias in updatedPackages) {
 	sfdxProjectJSON.packageAliases[updatedPackageAlias] = updatePackages[updatedPackageAlias];
   }
