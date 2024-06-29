@@ -11,7 +11,6 @@ async function start() {
   let workQueue = new Queue('work', process.env.REDIS_URL);
   
   process.stdout.write('Worker started.\n');
-  await cloneRepo(285);
 
   workQueue.process('kickoff', async (job) => {
     process.stdout.write('Kickoff job received\n');
