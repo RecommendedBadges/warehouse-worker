@@ -172,6 +172,7 @@ async function updatePackages(packageLimit, sortedPackagesToUpdate, updatedPacka
 
 async function installPackages(updatedPackages) {
   for(let updatedPackageAlias in updatedPackages) {
+	process.stdout.write(`Installing package ${updatedPackageAlias}`);
 	let {stderr} = await exec(
 	  `${PACKAGE_INSTALL_COMMAND} -p ${updatedPackages[updatedPackageAlias]} -o ${process.env.HUB_ALIAS} -w ${process.env.WAIT_TIME} -r --json`
 	);
@@ -190,6 +191,7 @@ async function pushUpdatedPackageJSON(updatedPackages) {
 
   ({stderr} = await exec(`${GIT_PULL_COMMAND}`))
 
+  process.stdout.write('Updating package.json and pushing to main');
   for(let updatedPackageAlias in updatedPackages) {
 	sfdxProjectJSON.packageAliases[updatedPackageAlias] = updatePackages[updatedPackageAlias];
   }
