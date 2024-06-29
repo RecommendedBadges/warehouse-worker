@@ -1,4 +1,5 @@
 const { orchestrate, setupScheduledJob } = require('./services');
+const { post } = require('./util');
 
 let throng = require('throng');
 let Queue = require("bull");
@@ -14,10 +15,12 @@ function start() {
   workQueue.process('kickoff', async (job) => {
     process.stdout.write('Kickoff job received\n');
     await orchestrate(job.data);
+    await post('warehouse', '', {formationType: 'worker'});
   });
 
   workQueue.process('scheduled', async () => {
     await setupScheduledJob();
+    await post('warehouse', '', {formationType: 'clock'});
   })
 }
 
