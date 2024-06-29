@@ -1,5 +1,5 @@
 const callout = require('./callout.js');
-const { BASE_BRANCH } = require('../config');
+const { BASE_BRANCH, PACKAGES_LABEL } = require('../config');
 
 async function commentOnPullRequest(pullRequestNumber, commentBody) {
     console.log(commentBody);
@@ -29,12 +29,17 @@ async function getOpenPullRequestDetails(parameters) {
     }
 }
 
+async function deletePackageLabelFromIssue(issueNumber) {
+    await callout.doDelete('github', `/issues/${issueNumber}/labels/${PACKAGES_LABEL}`);
+}
+
 async function mergeOpenPullRequest(pullRequestNumber) {
     await callout.put('github', `/pulls/${pullRequestNumber}/merge`, {});
 }
 
 module.exports = {
     commentOnPullRequest,
+    deletePackageLabelFromIssue,
     getIssueComments,
     getOpenPullRequestDetails,
     mergeOpenPullRequest

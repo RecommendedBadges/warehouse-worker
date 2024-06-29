@@ -79,6 +79,7 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
 	  }
 	} else {
 	  await installPackages(updatedPackages);
+	  await github.deletePackageLabelFromIssue(pullRequestNumber);
 	  await github.mergeOpenPullRequest(pullRequestNumber);
 	  try {
 		await pushUpdatedPackageJSON(updatedPackages);
