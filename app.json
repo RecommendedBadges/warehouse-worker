@@ -5,6 +5,7 @@
             "size": "eco"
         }
     },
+    "stack": "heroku-22",
     "name": "Warehouse Worker",
     "descripton": "Heroku application for automatically creating unlocked package versions and installing them in a DevHub org as part of a pipeline.",
     "repository": "https://github.com/RecommendedBadges/warehouse-worker"
