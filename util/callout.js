@@ -54,7 +54,17 @@ async function put(site, endpoint, body) {
     }
 }
 
+async function doDelete(site, endpoint, body) {
+    try {
+        const res = await axios.delete(...generateRequest(site, endpoint, body));
+        return res.data;
+    } catch(err) {
+        fatal('doDelete()', err.message);
+    }
+}
+
 module.exports = {
+    doDelete,
     get,
     patch,
     post,
