@@ -173,7 +173,7 @@ async function updatePackages(packageLimit, sortedPackagesToUpdate, updatedPacka
 
 async function installPackages(updatedPackages) {
   for(let updatedPackageAlias in updatedPackages) {
-	process.stdout.write(`Installing package ${updatedPackageAlias}`);
+	process.stdout.write(`Installing package ${updatedPackageAlias}\n`);
 	let {stderr} = await exec(
 	  `${PACKAGE_INSTALL_COMMAND} -p ${updatedPackages[updatedPackageAlias]} -o ${process.env.HUB_ALIAS} -w ${process.env.WAIT_TIME} -r --json`
 	);

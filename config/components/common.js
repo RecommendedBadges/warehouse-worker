@@ -1,7 +1,8 @@
 const REQUEST_HEADERS = {
     github: {
         'Accept': 'application/vnd.github+json',
-        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
+        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+        'X-Github-Api-Version': '2022-11-28'
     },
     heroku: {
         'Accept': 'application/vnd.heroku+json; version=3',

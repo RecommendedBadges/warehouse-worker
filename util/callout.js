@@ -18,13 +18,20 @@ async function get({site, endpoint, fullUrl}) {
 }
 
 function generateRequest(site, endpoint, body) {
-    return [
-        `${API_BASES[site]}${endpoint}`,
-        body,
-        {
-            headers: REQUEST_HEADERS[site]
-        }
-    ]
+    let request;
+    if(body) {
+        request = [
+            `${API_BASES[site]}${endpoint}`,
+            body,
+            {headers: REQUEST_HEADERS[site]}
+        ];
+    } else {
+        request = [
+            `${API_BASES[site]}${endpoint}`,
+            {headers: REQUEST_HEADERS[site]}
+        ]
+    }
+    return request;
 }
 
 async function patch(site, endpoint, body) {
@@ -54,9 +61,9 @@ async function put(site, endpoint, body) {
     }
 }
 
-async function doDelete(site, endpoint, body) {
+async function doDelete(site, endpoint) {
     try {
-        const res = await axios.delete(...generateRequest(site, endpoint, body));
+        const res = await axios.delete(...generateRequest(site, endpoint));
         return res.data;
     } catch(err) {
         fatal('doDelete()', err.message);
