@@ -63,7 +63,9 @@ async function put(site, endpoint, body) {
 
 async function doDelete(site, endpoint) {
     try {
-        const res = await axios.delete(...generateRequest(site, endpoint));
+        const req = [...generateRequest(site, endpoint)];
+        process.stdout.write(`doDelete req ${req}\n`);
+        const res = await axios.delete(req);
         return res.data;
     } catch(err) {
         fatal('doDelete()', err.message);
