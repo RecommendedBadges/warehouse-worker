@@ -5,7 +5,7 @@ Honeybadger.configure({
 });
 
 async function fatal(origin, err) {
-    let errorMessage = `Error in ${origin}: ${err}`;
+    let errorMessage = `Error in ${origin}: ${err}\n`;
     process.stderr.write(errorMessage);
     await Honeybadger.notifyAsync(errorMessage);
     process.exit(1);
