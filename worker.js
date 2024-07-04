@@ -1,12 +1,6 @@
 const { orchestrate, setupScheduledJob } = require('./services');
 const { post } = require('./util');
 
-const Honeybadger = require("@honeybadger-io/js");
-Honeybadger.configure({
-  apiKey: process.env.HONEYBADGER_API_KEY,
-  environment: "production"
-});
-
 let throng = require('throng');
 let Queue = require("bull");
 
