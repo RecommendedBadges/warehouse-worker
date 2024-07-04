@@ -2,8 +2,7 @@ const callout = require('./callout.js');
 const { BASE_BRANCH, PACKAGES_LABEL } = require('../config');
 
 async function commentOnPullRequest(pullRequestNumber, commentBody) {
-    console.log(commentBody);
-    callout.post('github', `/issues/${pullRequestNumber}/comments`, commentBody);
+    callout.post('github', `/issues/${pullRequestNumber}/comments`, {body: commentBody});
 }
 
 async function getIssueComments(issueNumber) {

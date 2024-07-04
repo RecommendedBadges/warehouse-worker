@@ -9,6 +9,7 @@
         "@salesforce/cli": "^2.49.7",
         "axios": "^1.7.2",
         "bull": "^4.15.0",
+        "node": "^20.15.0",
         "throng": "^5.0.0"
     },
     "engines": {
@@ -17,5 +18,8 @@
     },
     "scripts": {
         "start": "nf start"
+    },
+    "devDependencies": {
+        "node-env-run": "^4.0.2"
     }
 }
