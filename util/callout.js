@@ -20,6 +20,7 @@ async function get({site, endpoint, fullUrl}) {
 function generateRequest(site, endpoint, body) {
     let request;
     if(body) {
+        process.stdout.write('got body');
         request = [
             `${API_BASES[site]}${endpoint}`,
             body,
@@ -63,9 +64,7 @@ async function put(site, endpoint, body) {
 
 async function doDelete(site, endpoint) {
     try {
-        const req = [...generateRequest(site, endpoint)];
-        process.stdout.write(`doDelete req ${req}\n`);
-        const res = await axios.delete(req);
+        const res = await axios.delete(...generateRequest(site, endpoint));
         return res.data;
     } catch(err) {
         fatal('doDelete()', err.message);

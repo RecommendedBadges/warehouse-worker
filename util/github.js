@@ -1,20 +1,20 @@
 const callout = require('./callout.js');
 const { BASE_BRANCH, PACKAGES_LABEL } = require('../config');
 
-async function commentOnPullRequest(pullRequestNumber, commentBody) {
+function commentOnPullRequest(pullRequestNumber, commentBody) {
     callout.post('github', `/issues/${pullRequestNumber}/comments`, {body: commentBody});
 }
 
-async function getIssueComments(issueNumber) {
-    let issueComments = await callout.get({
+function getIssueComments(issueNumber) {
+    let issueComments = callout.get({
         site: 'github',
         endpoint: `/issues/${issueNumber}/comments`
     });
     return issueComments;
 }
 
-async function getOpenPullRequestDetails(parameters) {
-    let pullRequests = await callout.get({
+function getOpenPullRequestDetails(parameters) {
+    let pullRequests = callout.get({
         site: 'github',
         endpoint: '/pulls'
     });
@@ -28,12 +28,12 @@ async function getOpenPullRequestDetails(parameters) {
     }
 }
 
-async function deletePackageLabelFromIssue(issueNumber) {
-    await callout.doDelete('github', `/issues/${issueNumber}/labels/${PACKAGES_LABEL}`);
+function deletePackageLabelFromIssue(issueNumber) {
+    callout.doDelete('github', `/issues/${issueNumber}/labels/${PACKAGES_LABEL}`);
 }
 
-async function mergeOpenPullRequest(pullRequestNumber) {
-    await callout.put('github', `/pulls/${pullRequestNumber}/merge`);
+function mergeOpenPullRequest(pullRequestNumber) {
+    callout.put('github', `/pulls/${pullRequestNumber}/merge`);
 }
 
 module.exports = {
