@@ -28,8 +28,8 @@ let reversePackageAliases = {};
 let sfdxProjectJSON = {};
 
 async function setupScheduledJob() {
-  let pullRequestNumber = github.getOpenPullRequestDetails({}).number;
-  let issueComments = github.getIssueComments(pullRequestNumber);
+  let pullRequestNumber = await github.getOpenPullRequestDetails({}).number;
+  let issueComments = await github.getIssueComments(pullRequestNumber);
   let mostRecentPackageCommentBody;
   let mostRecentPackageCommentDate;
 
@@ -71,15 +71,15 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
 	if(packagesNotUpdated.length > 0) {
 	  try {
 		let pullRequestComment = `${pullRequestNumber}\nUpdated Packages:\n${Object.entries(updatedPackages)}\nPackages Not Updated:\n${packagesNotUpdated.join(', ')}`;
-		github.commentOnPullRequest(pullRequestNumber, pullRequestComment);
+		await github.commentOnPullRequest(pullRequestNumber, pullRequestComment);
 		await heroku.scaleDyno('clock', 1);
 	  } catch(err) {
 		console.error(err);
 	  }
 	} else {
 	  await installPackages(updatedPackages);
-	  github.deletePackageLabelFromIssue(pullRequestNumber);
-	  github.mergeOpenPullRequest(pullRequestNumber);
+	  await github.deletePackageLabelFromIssue(pullRequestNumber);
+	  await github.mergeOpenPullRequest(pullRequestNumber);
 	  try {
 		await pushUpdatedPackageJSON(updatedPackages);
 		await heroku.scaleDyno('clock', 0);
@@ -93,7 +93,7 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
 }
 
 async function cloneRepo(pullRequestNumber) {
-  let pullRequest = github.getOpenPullRequestDetails({pullRequestNumber});
+  let pullRequest = await github.getOpenPullRequestDetails({pullRequestNumber});
   let stderr;
 
   if(fs.existsSync(process.env.REPOSITORY_NAME)) {
