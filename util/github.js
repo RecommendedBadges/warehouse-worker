@@ -18,6 +18,7 @@ function getOpenPullRequestDetails(parameters) {
         site: 'github',
         endpoint: '/pulls'
     });
+    process.stdout.write(`${pullRequests}`);
     for(let pullRequest of pullRequests) {
         if(
             (pullRequest.base.ref === BASE_BRANCH) 

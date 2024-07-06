@@ -78,8 +78,8 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
 	  }
 	} else {
 	  await installPackages(updatedPackages);
-	  await github.deletePackageLabelFromIssue(pullRequestNumber);
-	  await github.mergeOpenPullRequest(pullRequestNumber);
+	  github.deletePackageLabelFromIssue(pullRequestNumber);
+	  github.mergeOpenPullRequest(pullRequestNumber);
 	  try {
 		await pushUpdatedPackageJSON(updatedPackages);
 		await heroku.scaleDyno('clock', 0);
@@ -93,7 +93,7 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
 }
 
 async function cloneRepo(pullRequestNumber) {
-  let pullRequest = await github.getOpenPullRequestDetails({pullRequestNumber});
+  let pullRequest = github.getOpenPullRequestDetails({pullRequestNumber});
   let stderr;
 
   if(fs.existsSync(process.env.REPOSITORY_NAME)) {
