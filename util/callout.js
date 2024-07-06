@@ -13,7 +13,7 @@ async function get({site, endpoint, fullUrl}) {
         );
         return res.data;
     } catch(err) {
-        fatal('get()', err.message);
+        fatal('get()', err);
     }
 }
 
@@ -40,7 +40,7 @@ async function patch(site, endpoint, body) {
         const res = await axios.patch(...generateRequest(site, endpoint, body));
         return res.data;
     } catch(err) {
-        fatal('patch()', err.message);
+        fatal('patch()', err);
     }
 }
 
@@ -49,7 +49,7 @@ async function post(site, endpoint, body) {
         const res = await axios.post(...generateRequest(site, endpoint, body));
         return res.data;
     } catch(err) {
-        fatal('post()', err.message);
+        fatal('post()', err);
     }
 }
 
@@ -58,7 +58,7 @@ async function put(site, endpoint, body) {
         const res = await axios.put(...generateRequest(site, endpoint, body));
         return res.data;
     } catch(err) {
-        fatal('put()', err.message);
+        fatal('put()', err);
     }
 }
 
@@ -67,7 +67,7 @@ async function doDelete(site, endpoint) {
         const res = await axios.delete(...generateRequest(site, endpoint));
         return res.data;
     } catch(err) {
-        fatal('doDelete()', err.message);
+        fatal('doDelete()', err);
     }
 }
 

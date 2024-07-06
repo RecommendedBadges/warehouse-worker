@@ -69,13 +69,9 @@ async function orchestrate({pullRequestNumber, sortedPackagesToUpdate, updatedPa
 	({updatedPackages, packagesNotUpdated} = await updatePackages(packageLimit, sortedPackagesToUpdate, updatedPackages));
 
 	if(packagesNotUpdated.length > 0) {
-	  try {
 		let pullRequestComment = `${pullRequestNumber}\nUpdated Packages:\n${Object.entries(updatedPackages)}\nPackages Not Updated:\n${packagesNotUpdated.join(', ')}`;
 		await github.commentOnPullRequest(pullRequestNumber, pullRequestComment);
 		await heroku.scaleDyno('clock', 1);
-	  } catch(err) {
-		console.error(err);
-	  }
 	} else {
 	  await installPackages(updatedPackages);
 	  await github.deletePackageLabelFromIssue(pullRequestNumber);
@@ -127,7 +123,7 @@ function parseSFDXProjectJSON() {
 	  reversePackageAliases[packageAliases[alias]] = alias;
 	}
   } catch(err) {
-	error.fatal('parseSFDXProjectJSON()', err.message);
+	error.fatal('parseSFDXProjectJSON()', err);
   }
 }
 
