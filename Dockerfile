@@ -6,7 +6,7 @@ RUN apt-get install -y --no-install-recommends git
 
 ADD ./app /opt/app
 WORKDIR /opt/app
-RUN npm install
+RUN npm ci
 ENV PATH="$PATH:/opt/app/node_modules/@salesforce/cli/bin"
 
 RUN adduser myuser --quiet
