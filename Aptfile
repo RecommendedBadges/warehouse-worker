@@ -11,4 +11,4 @@ gcc
 zlib1g-dev
 git-man
 git
-git-daemon
+git-daemon-run
