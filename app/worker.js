@@ -30,6 +30,10 @@ async function start() {
 
   ({stdout, stderr} = await exec(`npm prefix -g`));
   process.stdout.write(`${stdout}\n`);
+  ({stdout, stderr} = await exec(`npm prefix`));
+  process.stdout.write(`${stdout}\n`);
+  ({stdout, stderr} = await exec(`echo $PATH`));
+  process.stdout.write(`${stdout}\n`);
   if(stderr) {
     error.fatal('start()', stderr);
   }
