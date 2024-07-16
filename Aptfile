@@ -1,5 +1,6 @@
 install-info
 autotools-dev
 libssl-dev
+libcurl4-openssl-dev
 libexpat1-dev
 git
