@@ -10,5 +10,6 @@ make
 gcc
 zlib1g-dev
 git-man
+libcurl
 git
 git-mediawiki
