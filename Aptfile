@@ -1,7 +1,12 @@
 install-info
+gettext
+build-essential
 autotools-dev
 libssl-dev
 libcurl4-openssl-dev
 libexpat1-dev
+liberror-perl
 make
+python
+zlib1g-dev
 git
