@@ -1,3 +1,4 @@
+install-info
 autotools-dev
 libssl-dev
 libexpat1-dev
