@@ -28,12 +28,7 @@ async function start() {
   });
 
 
-  ({stdout, stderr} = await exec(`ls`));
-  process.stdout.write(`${stdout}\n`);
-  if(stderr) {
-    error.fatal('start()', stderr);
-  }
-  ({stdout, stderr} = await exec(`sf`));
+  ({stdout, stderr} = await exec(`ls node_modules/`));
   process.stdout.write(`${stdout}\n`);
   if(stderr) {
     error.fatal('start()', stderr);
