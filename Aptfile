@@ -9,4 +9,5 @@ liberror-perl
 make
 gcc
 zlib1g-dev
+git-man
 git
