@@ -1,0 +1,12 @@
+build:
+  docker:
+    worker: Dockerfile
+    clock: Dockerfile
+run:
+  worker:
+    command:
+      - node worker.js
+  clock:
+    command:
+      - node clock.js
+    
