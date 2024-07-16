@@ -16,7 +16,7 @@
         "npm": "10.x"
     },
     "scripts": {
-        "start": "nf start"
+        "worker": "node worker.js"
     },
     "devDependencies": {
         "node-env-run": "^4.0.2"
