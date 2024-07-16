@@ -9,4 +9,3 @@ run:
   clock:
     command:
       - node clock.js
-    

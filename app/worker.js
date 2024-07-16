@@ -5,6 +5,9 @@ let throng = require('throng');
 let Queue = require("bull");
 
 
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+
 let workers = process.env.WEB_CONCURRENCY || 1;
 
 async function start() {
@@ -22,7 +25,19 @@ async function start() {
   workQueue.process('scheduled', async () => {
     await setupScheduledJob();
     await post('warehouse', '', {formationType: 'clock'});
-  })
+  });
+
+
+  ({stdout, stderr} = await exec(`ls`));
+  process.stdout.write(`${stdout}\n`);
+  if(stderr) {
+    error.fatal('start()', stderr);
+  }
+  ({stdout, stderr} = await exec(`sf`));
+  process.stdout.write(`${stdout}\n`);
+  if(stderr) {
+    error.fatal('start()', stderr);
+  }
 }
 
 // Initialize the clustered worker process
