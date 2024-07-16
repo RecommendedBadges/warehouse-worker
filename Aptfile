@@ -3,9 +3,14 @@ gettext
 build-essential
 autotools-dev
 libssl-dev
-libcurl4-openssl-dev
 libexpat1-dev
+libidn-dev
+libkrb5-dev
+libldap-dev
+librtmp-dev
 liberror-perl
+libcurl4-openssl-dev
+pkg-config
 make
 gcc
 zlib1g-dev
