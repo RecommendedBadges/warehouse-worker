@@ -6,7 +6,7 @@ RUN apt-get install -y --no-install-recommends git
 
 ADD ./app /opt/app
 WORKDIR /opt/app
-RUN npm install
+RUN npm install -g
 
 RUN adduser myuser --quiet
 USER myuser
