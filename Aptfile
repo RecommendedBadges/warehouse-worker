@@ -7,6 +7,6 @@ libcurl4-openssl-dev
 libexpat1-dev
 liberror-perl
 make
-python
+gcc
 zlib1g-dev
 git
