@@ -1,2 +1,4 @@
-libcurl4-openssl-dev
+autotools-dev
+libssl-dev
+libexpat1-dev
 git
