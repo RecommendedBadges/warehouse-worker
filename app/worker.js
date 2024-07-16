@@ -28,7 +28,7 @@ async function start() {
   });
 
 
-  ({stdout, stderr} = await exec(`ls node_modules/`));
+  ({stdout, stderr} = await exec(`npm prefix -g`));
   process.stdout.write(`${stdout}\n`);
   if(stderr) {
     error.fatal('start()', stderr);
