@@ -8,4 +8,4 @@ run:
       - npm run worker
   clock:
     command:
-      - node clock.js
+      - npm run clock

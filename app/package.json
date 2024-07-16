@@ -16,7 +16,8 @@
         "npm": "10.x"
     },
     "scripts": {
-        "worker": "node worker.js"
+        "worker": "node worker.js",
+        "clock": "node clock.js"
     },
     "devDependencies": {
         "node-env-run": "^4.0.2"
