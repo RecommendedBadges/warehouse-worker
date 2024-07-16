@@ -5,7 +5,7 @@ build:
 run:
   worker:
     command:
-      - npm worker
+      - npm run worker
   clock:
     command:
       - node clock.js
