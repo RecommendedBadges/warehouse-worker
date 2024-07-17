@@ -55,6 +55,9 @@ async function post(site, endpoint, body) {
 
 async function put(site, endpoint, body) {
     try {
+        try {
+            process.stdout.write(`${Array.entries(generateRequest(site, endpoint, body))}`);
+        } catch(err) {}
         const res = await axios.put(...generateRequest(site, endpoint, body));
         return res.data;
     } catch(err) {
