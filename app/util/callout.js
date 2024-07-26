@@ -20,7 +20,6 @@ async function get({site, endpoint, fullUrl}) {
 function generateRequest(site, endpoint, body) {
     let request;
     if(body) {
-        process.stdout.write('got body');
         request = [
             `${API_BASES[site]}${endpoint}`,
             body,
@@ -57,7 +56,9 @@ async function put(site, endpoint, body) {
     try {
         try {
             process.stdout.write(`${Array.entries(generateRequest(site, endpoint, body))}`);
-        } catch(err) {}
+        } catch(err) {
+            process.stderr.write(err);
+        }
         const res = await axios.put(...generateRequest(site, endpoint, body));
         return res.data;
     } catch(err) {
