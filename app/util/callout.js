@@ -55,7 +55,7 @@ async function post(site, endpoint, body) {
 async function put(site, endpoint, body) {
     try {
         try {
-            process.stdout.write(`${Array.entries(generateRequest(site, endpoint, body))}`);
+            process.stdout.write(`${generateRequest(site, endpoint, body).join('\n')}`);
         } catch(err) {
             process.stderr.write(err);
         }
