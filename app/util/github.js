@@ -34,7 +34,7 @@ async function deletePackageLabelFromIssue(issueNumber) {
 }
 
 async function mergeOpenPullRequest(pullRequestNumber) {
-    await callout.put('github', `/pulls/${pullRequestNumber}/merge`);
+    await callout.put('github', `/pulls/${pullRequestNumber}/merge`, {merge_method: 'merge'});
 }
 
 module.exports = {
