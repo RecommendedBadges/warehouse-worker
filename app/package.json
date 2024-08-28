@@ -8,7 +8,7 @@
         "@honeybadger-io/js": "^6.9.3",
         "@salesforce/cli": "^2.55.6",
         "axios": "^1.7.5",
-        "bull": "^4.16.0",
+        "bull": "^4.16.1",
         "throng": "^5.0.0"
     },
     "engines": {
