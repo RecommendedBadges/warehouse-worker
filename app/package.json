@@ -6,7 +6,7 @@
     "license": "MIT",
     "dependencies": {
         "@honeybadger-io/js": "^6.9.3",
-        "@salesforce/cli": "^2.75.5",
+        "@salesforce/cli": "^2.76.7",
         "axios": "^1.7.9",
         "bull": "^4.16.5",
         "throng": "^5.0.0"
