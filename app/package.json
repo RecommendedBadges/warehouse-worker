@@ -7,7 +7,7 @@
     "dependencies": {
         "@honeybadger-io/js": "^6.9.3",
         "@salesforce/cli": "^2.85.7",
-        "axios": "^1.8.4",
+        "axios": "^1.9.0",
         "bull": "^4.16.5",
         "throng": "^5.0.0"
     },
