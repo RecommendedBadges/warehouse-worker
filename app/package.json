@@ -5,7 +5,7 @@
     "main": "worker.js",
     "license": "MIT",
     "dependencies": {
-        "@honeybadger-io/js": "^6.9.3",
+        "@honeybadger-io/js": "^6.11.1",
         "@salesforce/cli": "^2.99.6",
         "axios": "^1.11.0",
         "bull": "^4.16.5",
